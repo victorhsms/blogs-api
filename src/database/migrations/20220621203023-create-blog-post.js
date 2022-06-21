@@ -24,12 +24,12 @@ module.exports = {
           key: "id",
         },
       },
-      createdAt: {
+      published: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn("now"),
       },
-      updatedAt: {
+      updated: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn("now"),
