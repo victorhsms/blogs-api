@@ -2,7 +2,7 @@ const { User } = require('../database/models');
 
 const { generateJWTToken } = require('../utils/jwt');
 
-const authenticate = async ({ email, password }) => {
+const auth = async ({ email, password }) => {
   const userFound = await User.findOne({
     where: { email, password },
   });
@@ -17,5 +17,5 @@ const authenticate = async ({ email, password }) => {
 };
 
 module.exports = {
-  authenticate,
+  auth,
 };
