@@ -9,11 +9,13 @@ const auth = async ({ email, password }) => {
 
   const error = { status: 400, message: 'Invalid fields' };
 
-  if (!userFound) throw error;
+  if (!userFound) {
+    throw error;
+  }
 
   const token = generateJWTToken(userFound.dataValues);
 
-  return { token };
+  return token;
 };
 
 module.exports = {
