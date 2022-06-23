@@ -5,5 +5,6 @@ const { authToken } = require('../middleware/index');
 const router = express.Router();
 
 router.get('/', authToken, postController.getAll);
+router.get('/:id', authToken, postController.getById);
 
 module.exports = router;

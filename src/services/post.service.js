@@ -8,15 +8,23 @@ const getAll = () =>
     ],
   });
 
-const getById = async () => {
-  const userFound = await BlogPost.findOne();
+const getById = async (id) => {
+  const postFound = await BlogPost.findOne(
+    { 
+      where: { id },
+      include: [
+        { model: User, as: 'user', attributes: { exclude: ['password'] } },
+        { model: Category, as: 'categories', through: { attributes: [] } },
+      ],
+    },
+  );
 
-  if (!userFound) {
-    const error = { status: 404, message: 'User does not exist' };
+  if (!postFound) {
+    const error = { status: 404, message: 'Post does not exist' };
     throw error;
   }
 
-  return userFound;
+  return postFound;
 };
 
 module.exports = {
