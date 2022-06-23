@@ -11,7 +11,13 @@ const getById = async (req, res) => {
   res.status(200).json(userFound);
 };
 
+const newUser = async (req, res) => {
+  const token = await userServices.newUser(req.body);
+  res.status(201).json({ token });
+};
+
 module.exports = {
   getAllUsers,
   getById,
+  newUser,
 };
